@@ -228,9 +228,6 @@ export function MemoryGallery() {
               onClick={() => setOpen(priiiCollage)}
               className="group relative w-full glass rounded-2xl sm:rounded-3xl overflow-hidden float hover:scale-[1.02] transition-transform duration-500 glow-gold block"
             >
-              {/* Polaroid tape strips */}
-              <div className="absolute top-0 left-1/3 w-16 h-4 z-10 rotate-[-2deg]" style={{ background: "oklch(0.85 0.16 85 / 0.5)", backdropFilter: "blur(2px)", borderRadius: "2px" }} />
-              <div className="absolute top-0 right-1/4 w-12 h-4 z-10 rotate-[3deg]" style={{ background: "oklch(0.75 0.22 310 / 0.5)", backdropFilter: "blur(2px)", borderRadius: "2px" }} />
               <div className="aspect-[16/9] sm:aspect-[2/1] overflow-hidden">
                 <img
                   src={priiiCollage}
@@ -266,8 +263,7 @@ export function MemoryGallery() {
                 className="group relative w-full glass rounded-2xl sm:rounded-3xl overflow-hidden float hover:scale-[1.03] transition-transform duration-500 glow-purple block"
                 style={{ animationDelay: "1.5s" }}
               >
-                <div className="absolute top-0 left-1/4 w-10 h-3 z-10 rotate-[2deg]" style={{ background: "oklch(0.75 0.22 310 / 0.5)", borderRadius: "2px" }} />
-                <div className="aspect-[4/5] overflow-hidden">
+                <div className="aspect-video overflow-hidden">
                   <img
                     src={memory2}
                     alt="Memory 2"
@@ -288,7 +284,7 @@ export function MemoryGallery() {
           </div>
 
           {/* Quote card */}
-          <div className="col-span-1 glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center glow-border-animated float" style={{ animationDelay: "0.8s", minHeight: "300px" }}>
+          <div className="col-span-1 glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center glow-border-animated float" style={{ animationDelay: "0.8s", minHeight: "200px" }}>
             <div className="text-4xl mb-4" style={{ filter: "drop-shadow(0 0 12px oklch(0.85 0.16 85))"}}>💌</div>
             <blockquote className="font-display text-lg sm:text-xl text-gradient-aurora italic text-center leading-relaxed">
               "if beauty had a definition, these pictures would be the example."
