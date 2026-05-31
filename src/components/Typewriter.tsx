@@ -52,14 +52,31 @@ export function Typewriter({
 
   return (
     <div className={className}>
-      {shown.map((l, i) => (
-        <p key={i} className="fade-in mb-4">
-          {l}
-        </p>
-      ))}
-      {lineIdx < lines.length && (
-        <p className="cursor">{current}</p>
-      )}
+      {lines.map((l, i) => {
+        if (i < lineIdx) {
+          // Fully typed lines
+          return (
+            <p key={i} className="fade-in mb-4">
+              {l}
+            </p>
+          );
+        } else if (i === lineIdx) {
+          // Currently typing line
+          return (
+            <p key={i} className="mb-4">
+              <span className="cursor">{current}</span>
+              <span className="opacity-0 select-none">{l.slice(current.length)}</span>
+            </p>
+          );
+        } else {
+          // Future lines (invisible but taking up space)
+          return (
+            <p key={i} className="opacity-0 select-none mb-4">
+              {l}
+            </p>
+          );
+        }
+      })}
     </div>
   );
 }

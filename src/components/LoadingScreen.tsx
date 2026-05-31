@@ -38,7 +38,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
       </div>
       <div className="relative text-center px-6 flex flex-col items-center">
         <p className="font-display text-xl md:text-3xl text-gradient-gold text-glow italic fade-in mb-8">
-          Some moments are meant to be kept forever.
+          I have something to show you...
         </p>
         <button
           onClick={handleEnter}

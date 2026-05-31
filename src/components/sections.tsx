@@ -85,6 +85,7 @@ export function Opening() {
           <Typewriter
             className="text-lg sm:text-xl md:text-3xl font-display text-foreground/90 text-glow-soft min-h-[60vh] flex flex-col justify-center"
             lines={[
+              "Some moments are meant to be kept forever.",
               "Out of billions of people...",
               "Out of millions of conversations...",
               "Somehow...",
