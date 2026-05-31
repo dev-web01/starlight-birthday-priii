@@ -80,10 +80,10 @@ export function Opening() {
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center min-h-[60vh] flex flex-col justify-center">
         {!showTitle ? (
           <Typewriter
-            className="text-lg sm:text-xl md:text-3xl font-display text-foreground/90 text-glow-soft min-h-[60vh] flex flex-col justify-center"
+            className="text-lg sm:text-xl md:text-3xl font-display text-foreground/90 text-glow-soft"
             lines={[
               "Some moments are meant to be kept forever.",
               "Out of billions of people...",

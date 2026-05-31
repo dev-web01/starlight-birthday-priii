@@ -90,7 +90,8 @@
     background: var(--gradient-night);
     color: var(--color-foreground);
     font-family: var(--font-body);
-    overflow-x: hidden;
+    overflow-x: clip;
+    min-height: 100dvh;
     min-height: 100vh;
   }
   h1, h2, h3, h4 {
@@ -452,6 +453,9 @@
 }
 
 @media (max-width: 768px) {
+  /* Disable smooth scrolling on mobile which causes scroll jumping/lag */
+  html { scroll-behavior: auto; }
+
   /* Reduce expensive backdrop blur on mobile */
   .glass {
     backdrop-filter: blur(8px) saturate(150%);
@@ -461,6 +465,14 @@
   .glass-strong {
     backdrop-filter: blur(12px) saturate(150%);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
+  }
+  
+  /* Reduce scroll layout shift distances for stability */
+  .reveal { transform: translateY(15px); }
+  .fade-up { animation-name: fadeUpMobile; }
+  @keyframes fadeUpMobile {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   
   /* Disable heavy continuous animations */
