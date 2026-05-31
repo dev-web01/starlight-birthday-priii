@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StarField } from "@/components/StarField";
 import { Butterflies } from "@/components/Butterflies";
 import { LoadingScreen } from "@/components/LoadingScreen";
@@ -35,6 +35,17 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!loaded) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [loaded]);
 
   return (
     <main className="relative">

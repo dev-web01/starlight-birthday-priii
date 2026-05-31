@@ -13,7 +13,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000 ${
+      className={`fixed top-0 left-0 w-screen h-[100dvh] z-[100] grid place-items-center bg-background transition-opacity duration-1000 overflow-hidden ${
         hide ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >

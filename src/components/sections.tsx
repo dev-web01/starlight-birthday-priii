@@ -61,7 +61,7 @@ function FloatingParticles({ count = 12 }: { count?: number }) {
 export function Opening() {
   const [showTitle, setShowTitle] = useState(false);
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
       <img
         src={heroImg}
         alt="Mountains under starry sky"
