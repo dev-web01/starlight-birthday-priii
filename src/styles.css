@@ -446,9 +446,41 @@
   to { transform: rotate(-360deg) translateX(0) rotate(360deg); }
 }
 
-/* Mobile touch-friendly tap states */
+/* Mobile touch-friendly tap states & optimizations */
 @media (hover: none) {
   .hover\:scale-105:active { transform: scale(1.05); }
+}
+
+@media (max-width: 768px) {
+  /* Reduce expensive backdrop blur on mobile */
+  .glass {
+    backdrop-filter: blur(8px) saturate(150%);
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
+    box-shadow: 0 4px 15px oklch(0 0 0 / 0.1);
+  }
+  .glass-strong {
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+  }
+  
+  /* Disable heavy continuous animations */
+  .pulse-glow {
+    animation: none !important;
+    box-shadow: 0 0 15px oklch(0.85 0.16 85 / 0.4) !important;
+  }
+  .shooting-star {
+    display: none !important;
+  }
+  .crazy-empty-slot .absolute.inset-0 {
+    animation: none !important;
+    background: linear-gradient(135deg, oklch(0.12 0.08 295), oklch(0.15 0.10 310)) !important;
+  }
+  .aurora-bg {
+    animation: none !important;
+  }
+}
+
+@media (hover: none) {
   .hover\:scale-\[1\.03\]:active { transform: scale(1.03); }
   .hover\:scale-110:active { transform: scale(1.1); }
   .hover\:scale-150:active { transform: scale(1.5); }

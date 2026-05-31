@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function LoadingScreen({ onDone }: { onDone: () => void }) {
   const [hide, setHide] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setHide(true), 3800);
-    const t2 = setTimeout(() => onDone(), 4800);
-    return () => {
-      clearTimeout(t);
-      clearTimeout(t2);
-    };
-  }, [onDone]);
+  
+  const handleEnter = () => {
+    setHide(true);
+    // Let the fade animation finish before unmounting
+    setTimeout(() => {
+      onDone();
+    }, 1000);
+  };
 
   return (
     <div
@@ -18,8 +18,8 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
       }`}
     >
       {/* Animated stars */}
-      <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 80 }).map((_, i) => (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 40 }).map((_, i) => (
           <span
             key={i}
             className="star absolute rounded-full bg-white"
@@ -30,24 +30,23 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
               height: `${Math.random() * 3 + 1}px`,
               ["--dur" as string]: `${Math.random() * 3 + 1.5}s`,
               ["--delay" as string]: `${Math.random() * 3}s`,
-              boxShadow: "0 0 6px rgba(255,255,255,0.8)",
+              boxShadow: "0 0 6px rgba(255,255,255,0.6)",
+              willChange: "transform, opacity",
             }}
           />
         ))}
       </div>
-      <div className="relative text-center px-6">
-        <p className="font-display text-xl md:text-3xl text-gradient-gold text-glow italic fade-in">
-          Loading a few things I've never said out loud...
+      <div className="relative text-center px-6 flex flex-col items-center">
+        <p className="font-display text-xl md:text-3xl text-gradient-gold text-glow italic fade-in mb-8">
+          Some moments are meant to be kept forever.
         </p>
-        <div className="mt-10 flex justify-center gap-1">
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              className="h-2 w-2 rounded-full bg-[oklch(0.85_0.16_85)]"
-              style={{ animation: `twinkle 1.4s ease-in-out ${i * 0.2}s infinite` }}
-            />
-          ))}
-        </div>
+        <button
+          onClick={handleEnter}
+          className="glass-strong px-8 py-3 rounded-full text-foreground hover:scale-105 transition font-display text-lg tracking-wide pulse-glow fade-up"
+          style={{ animationDelay: "1s" }}
+        >
+          Tap to open 💌
+        </button>
       </div>
     </div>
   );
