@@ -132,8 +132,9 @@ function ScrollProgress() {
     const update = () => {
       const scrolled = window.scrollY;
       const total = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = total > 0 ? (scrolled / total) * 100 : 0;
-      if (barRef.current) barRef.current.style.setProperty('--progress', `${pct}%`);
+      const pct = total > 0 ? (scrolled / total) : 0;
+      if (barRef.current) barRef.current.style.setProperty('--progress', pct.toString());
+      document.body.style.setProperty('--scroll', scrolled.toString());
     };
     window.addEventListener('scroll', update, { passive: true });
     update();

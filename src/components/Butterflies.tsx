@@ -53,7 +53,7 @@ export function Butterflies({ count = 6 }: { count?: number }) {
   );
 }
 
-export function BurstButterflies({ count = 30 }: { count?: number }) {
+export function BurstButterflies({ count = 15 }: { count?: number }) {
   const flies = useMemo(
     () =>
       Array.from({ length: count }, (_, i) => ({

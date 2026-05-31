@@ -14,7 +14,7 @@ export function Reveal({ children, className = "", delay = 0 }: { children: Reac
           obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.10 }
     );
     obs.observe(el);
     return () => obs.disconnect();

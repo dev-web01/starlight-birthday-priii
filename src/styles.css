@@ -138,10 +138,14 @@
 
 /* Stars */
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.3); }
+  0%, 100% { opacity: 0.3; transform: scale(1) translateZ(0); }
+  50% { opacity: 1; transform: scale(1.3) translateZ(0); }
 }
-.star { animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+.star { 
+  animation: twinkle var(--dur, 3s) ease-in-out infinite; 
+  animation-delay: var(--delay, 0s); 
+  will-change: opacity, transform;
+}
 
 @keyframes shootingStar {
   0% { transform: translate(0,0) rotate(-25deg); opacity: 0; }
@@ -232,8 +236,13 @@
 }
 
 /* Scroll fade */
-.reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal { 
+  opacity: 0; 
+  transform: translateY(40px) translateZ(0); 
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  will-change: transform, opacity;
+}
+.reveal.visible { opacity: 1; transform: translateY(0) translateZ(0); }
 
 /* ============ PRIII MEGA STYLES ============ */
 
@@ -427,14 +436,16 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--progress, 0%);
+  width: 100%;
   height: 3px;
   background: linear-gradient(90deg, oklch(0.75 0.22 310), oklch(0.85 0.16 85), oklch(0.75 0.22 310));
   background-size: 200% 100%;
   animation: holographic 2s linear infinite;
   z-index: 200;
   border-radius: 0 2px 2px 0;
-  box-shadow: 0 0 10px oklch(0.85 0.16 85 / 0.8);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  will-change: transform;
 }
 
 /* Orbit animations for CrazyEmptySlot */
@@ -449,7 +460,7 @@
 
 /* Mobile touch-friendly tap states & optimizations */
 @media (hover: none) {
-  .hover\:scale-105:active { transform: scale(1.05); }
+  .hover\:scale-105:active { transform: scale(0.97); }
 }
 
 @media (max-width: 768px) {
@@ -468,7 +479,7 @@
   }
   
   /* Reduce scroll layout shift distances for stability */
-  .reveal { transform: translateY(15px); }
+  .reveal { transform: translateY(20px) translateZ(0); }
   .fade-up { animation-name: fadeUpMobile; }
   @keyframes fadeUpMobile {
     from { opacity: 0; transform: translateY(15px); }
@@ -477,7 +488,7 @@
   
   /* Disable heavy continuous animations */
   .pulse-glow {
-    animation: none !important;
+    animation-name: none !important;
     box-shadow: 0 0 15px oklch(0.85 0.16 85 / 0.4) !important;
   }
   .shooting-star {
@@ -493,7 +504,8 @@
 }
 
 @media (hover: none) {
-  .hover\:scale-\[1\.03\]:active { transform: scale(1.03); }
-  .hover\:scale-110:active { transform: scale(1.1); }
-  .hover\:scale-150:active { transform: scale(1.5); }
+  .hover\:scale-\[1\.02\]:active { transform: scale(0.98); }
+  .hover\:scale-\[1\.03\]:active { transform: scale(0.98); }
+  .hover\:scale-110:active { transform: scale(0.95); }
+  .hover\:scale-150:active { transform: scale(1.1); }
 }

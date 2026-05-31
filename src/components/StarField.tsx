@@ -25,7 +25,10 @@ export function StarField({ count = 120, shootingCount = 3 }: { count?: number; 
   );
 
   return (
-    <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+    <div 
+      className="pointer-events-none fixed -left-[10vw] -right-[10vw] -top-[10vh] h-[120vh] overflow-hidden -z-10"
+      style={{ transform: 'translateY(calc(var(--scroll) * -0.15px)) translateZ(0)', willChange: 'transform' }}
+    >
       {stars.map((s) => (
         <span
           key={s.id}

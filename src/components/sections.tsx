@@ -65,7 +65,8 @@ export function Opening() {
       <img
         src={heroImg}
         alt="Mountains under starry sky"
-        className="absolute inset-0 h-full w-full object-cover opacity-70"
+        className="absolute inset-x-0 top-0 w-full object-cover opacity-70"
+        style={{ height: '130%', transform: 'translateY(calc(var(--scroll) * 0.4px)) translateZ(0)', willChange: 'transform' }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background" />
       <FloatingParticles count={16} />
@@ -459,7 +460,7 @@ export function ButterflyCounter() {
           )}
         </div>
       </div>
-      {burst && <BurstButterflies count={40} />}
+      {burst && <BurstButterflies count={15} />}
     </section>
   );
 }
