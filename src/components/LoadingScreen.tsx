@@ -42,7 +42,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         </p>
         <button
           onClick={handleEnter}
-          className="glass-strong px-8 py-3 rounded-full text-foreground hover:scale-105 transition font-display text-lg tracking-wide pulse-glow fade-up"
+          className="glass-strong px-8 py-3 rounded-full text-foreground hover:scale-105 transition font-display text-lg tracking-wide fade-up"
           style={{ animationDelay: "1s" }}
         >
           Tap to open 💌
