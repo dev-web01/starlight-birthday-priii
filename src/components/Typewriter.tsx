@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export function Typewriter({
   lines,
@@ -21,9 +21,23 @@ export function Typewriter({
   const [charIdx, setCharIdx] = useState(0);
   const [started, setStarted] = useState(false);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const t = setTimeout(() => setStarted(true), startDelay);
-    return () => clearTimeout(t);
+    const el = containerRef.current;
+    if (!el) return;
+    
+    let isIntersecting = false;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !isIntersecting) {
+        isIntersecting = true;
+        setTimeout(() => setStarted(true), startDelay);
+        obs.disconnect();
+      }
+    }, { threshold: 0.2 });
+    
+    obs.observe(el);
+    return () => obs.disconnect();
   }, [startDelay]);
 
   useEffect(() => {
@@ -51,7 +65,7 @@ export function Typewriter({
   }, [started, charIdx, lineIdx, lines, charDelay, pauseBetween, onDone]);
 
   return (
-    <div className={className}>
+    <div ref={containerRef} className={className}>
       {lines.map((l, i) => {
         if (i < lineIdx) {
           // Fully typed lines

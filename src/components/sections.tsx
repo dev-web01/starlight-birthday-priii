@@ -434,7 +434,7 @@ export function ButterflyCounter() {
         <p className="font-display text-xl sm:text-2xl text-foreground/80 mb-6">
           Butterflies Caused By <PriiiName size="1em" /> 🦋
         </p>
-        <div className="glass-strong rounded-2xl sm:rounded-3xl p-8 sm:p-12 glow-border-animated">
+        <div className="glass-strong rounded-2xl sm:rounded-3xl p-8 sm:p-12 glow-border-animated min-h-[200px] sm:min-h-[240px] flex flex-col justify-center">
           {!error ? (
             <div
               className="font-display text-gradient-gold text-glow tabular-nums"
@@ -670,28 +670,30 @@ export function SecretButton() {
   return (
     <section className="relative py-32 px-6">
       <Reveal className="mx-auto max-w-2xl text-center">
-        {!clicked ? (
-          <button
-            onClick={() => setClicked(true)}
-            className="glass-strong rounded-full px-10 py-6 font-display text-2xl text-foreground hover:scale-105 transition pulse-glow"
-          >
-            DO NOT CLICK 👀
-          </button>
-        ) : (
-          <div className="glass-strong rounded-3xl p-8 md:p-12">
-            <Typewriter
-              className="font-display text-xl md:text-2xl text-foreground/95 leading-relaxed"
-              lines={[
-                "I knew you'd click this.",
-                "That's one of the reasons I like you.",
-                "Curious people are dangerous.",
-                "Especially when they're cute.",
-              ]}
-              charDelay={45}
-              pauseBetween={1100}
-            />
-          </div>
-        )}
+        <div className="min-h-[240px] sm:min-h-[280px] flex flex-col justify-center">
+          {!clicked ? (
+            <button
+              onClick={() => setClicked(true)}
+              className="glass-strong rounded-full px-10 py-6 font-display text-2xl text-foreground hover:scale-105 transition pulse-glow mx-auto"
+            >
+              DO NOT CLICK 👀
+            </button>
+          ) : (
+            <div className="glass-strong rounded-3xl p-8 md:p-12 fade-in">
+              <Typewriter
+                className="font-display text-xl md:text-2xl text-foreground/95 leading-relaxed"
+                lines={[
+                  "I knew you'd click this.",
+                  "That's one of the reasons I like you.",
+                  "Curious people are dangerous.",
+                  "Especially when they're cute.",
+                ]}
+                charDelay={45}
+                pauseBetween={1100}
+              />
+            </div>
+          )}
+        </div>
       </Reveal>
     </section>
   );
@@ -704,39 +706,40 @@ export function HiddenLetter() {
     <section className="relative py-32 px-6">
       <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="font-display text-4xl md:text-5xl text-gradient-aurora mb-10">A Hidden Letter</h2>
-
-        {!open ? (
-          <button onClick={() => setOpen(true)} className="group inline-block hover:scale-105 transition">
-            <div className="relative w-72 h-48 mx-auto">
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[oklch(0.85_0.16_85)] to-[oklch(0.7_0.18_70)] glow-gold" />
-              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-br from-[oklch(0.9_0.14_85)] to-[oklch(0.75_0.18_70)] rounded-t-xl"
-                style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
+        <div className="min-h-[400px] flex flex-col justify-center">
+          {!open ? (
+            <button onClick={() => setOpen(true)} className="group inline-block hover:scale-105 transition">
+              <div className="relative w-72 h-48 mx-auto">
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[oklch(0.85_0.16_85)] to-[oklch(0.7_0.18_70)] glow-gold" />
+                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-br from-[oklch(0.9_0.14_85)] to-[oklch(0.75_0.18_70)] rounded-t-xl"
+                  style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center text-3xl">💌</div>
+              </div>
+              <p className="mt-6 text-foreground/70 italic">tap to open</p>
+            </button>
+          ) : (
+            <div className="glass-strong rounded-3xl p-8 md:p-12 text-left fade-in glow-gold h-full flex items-center">
+              <Typewriter
+                className="font-display text-lg md:text-xl text-foreground/95 leading-relaxed space-y-3 w-full"
+                lines={[
+                  "You once asked me what was special about you.",
+                  "And honestly...",
+                  "I spent more time thinking about that question than I probably should have.",
+                  "The truth is...",
+                  "I don't think it's just one thing.",
+                  "It's the way you talk.",
+                  "The way you think.",
+                  "The way you make people feel comfortable.",
+                  "The way you somehow became important without even trying.",
+                  "And that's rare.",
+                ]}
+                charDelay={35}
+                pauseBetween={800}
               />
-              <div className="absolute inset-0 flex items-center justify-center text-3xl">💌</div>
             </div>
-            <p className="mt-6 text-foreground/70 italic">tap to open</p>
-          </button>
-        ) : (
-          <div className="glass-strong rounded-3xl p-8 md:p-12 text-left fade-in glow-gold">
-            <Typewriter
-              className="font-display text-lg md:text-xl text-foreground/95 leading-relaxed space-y-3"
-              lines={[
-                "You once asked me what was special about you.",
-                "And honestly...",
-                "I spent more time thinking about that question than I probably should have.",
-                "The truth is...",
-                "I don't think it's just one thing.",
-                "It's the way you talk.",
-                "The way you think.",
-                "The way you make people feel comfortable.",
-                "The way you somehow became important without even trying.",
-                "And that's rare.",
-              ]}
-              charDelay={35}
-              pauseBetween={800}
-            />
-          </div>
-        )}
+          )}
+        </div>
       </Reveal>
     </section>
   );
