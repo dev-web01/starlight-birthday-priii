@@ -224,7 +224,6 @@ export function MemoryGallery() {
                 <img
                   src={priiiCollage}
                   alt="Priii collage"
-                  loading="lazy"
                   onError={() => setImg1Error(true)}
                   className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
                 />
@@ -261,7 +260,6 @@ export function MemoryGallery() {
                   <img
                     src={memory2}
                     alt="Memory 2"
-                    loading="lazy"
                     onError={() => setImg2Error(true)}
                     className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
@@ -364,12 +362,18 @@ export function MountainJourney() {
             ))}
           </div>
 
-          {active !== null && (
-            <div className="mt-6 sm:mt-10 glass-strong rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-2xl mx-auto fade-in glow-border-animated">
-              <div className="text-2xl sm:text-3xl mb-3">{MILESTONES[active].icon} {MILESTONES[active].title}</div>
-              <p className="text-foreground/85 font-display text-lg sm:text-xl italic">{MILESTONES[active].msg}</p>
-            </div>
-          )}
+          <div className="mt-6 sm:mt-10 max-w-2xl mx-auto min-h-[160px] sm:min-h-[180px]">
+            {active !== null ? (
+              <div className="glass-strong rounded-2xl sm:rounded-3xl p-5 sm:p-8 fade-in glow-border-animated h-full flex flex-col justify-center">
+                <div className="text-2xl sm:text-3xl mb-3">{MILESTONES[active].icon} {MILESTONES[active].title}</div>
+                <p className="text-foreground/85 font-display text-lg sm:text-xl italic">{MILESTONES[active].msg}</p>
+              </div>
+            ) : (
+              <div className="h-full flex items-center justify-center opacity-50 italic text-sm sm:text-base border border-dashed border-border/30 rounded-2xl sm:rounded-3xl p-5 fade-in">
+                Tap a milestone above to view the memory...
+              </div>
+            )}
+          </div>
         </div>
       </Reveal>
     </section>
