@@ -204,6 +204,17 @@ export function MemoryGallery() {
   const [img1Error, setImg1Error] = useState(false);
   const [img2Error, setImg2Error] = useState(false);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <section className="relative py-20 sm:py-32 px-4 sm:px-6">
       <Reveal className="mx-auto max-w-5xl text-center">
@@ -494,6 +505,17 @@ const COMPLIMENTS = [
 export function Constellation() {
   const [revealed, setRevealed] = useState<Set<number>>(new Set());
   const [popup, setPopup] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (popup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [popup]);
 
   const stars = COMPLIMENTS.map((_, i) => ({
     top: 8 + Math.random() * 80,

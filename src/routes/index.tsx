@@ -8,7 +8,6 @@ import {
   Opening,
   NeverPlanned,
   MemoryGallery,
-  MountainJourney,
   ButterflyCounter,
   Constellation,
   WhatsSpecial,
@@ -58,7 +57,6 @@ function Index() {
       <Opening />
       <NeverPlanned />
       <MemoryGallery />
-      <MountainJourney />
       <ButterflyCounter />
       <Constellation />
       <WhatsSpecial />
